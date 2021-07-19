@@ -1,0 +1,95 @@
+---OPERADORES----
+
+<  $lt (mayor)
+
+>  $gt (menor)
+
+<= $lte (menor a)
+
+>= $gte (mayor a)
+
+== $eq (igual a)
+
+!= $ne (diferente a)
+
+-------------------------------------------------
+
+
+Consultar precio MAYOR a: "$gt" (greater than)---
+
+db.products.find({
+    price: {
+        "$gt": 35000
+    }
+})
+
+
+Consultar precio MENOR a: "$lt" (lesser than)---
+
+db.products.find({
+    price: {
+        "$lt": 100000
+    }
+})
+
+
+----------------------------------
+
+
+Consultar precio entre un MÍNIMO y un MÁXIMO
+
+db.products.find({
+    "$and" : [
+        {
+            price: {
+                "$gte": 25000
+                }
+        },
+    {
+        price: {
+             "$lte": 55000
+            }
+        }
+    ]
+})
+
+db.products.find({"$and" : [{price: {"$gte": 25000}}, {price: { "$lte": 55000}}]})
+
+// Datos del usuario/url = req.
+// query es todo lo que esta en el signo "?" de la url
+
+en url: 
+price_min=25000&price_max=55000&most_visited=true&in_stock=false&brand=Samsung
+
+traducido en objeto:
+
+{
+    price_min: 25000,
+    price_max: 55000,
+    most_visited: true,
+    in_stock: false,
+    brand: Samsung
+}
+
+todos esos datos = req.query
+
+db.products.find({
+    brand: req.query.brand,
+    "$and" : [
+        {
+            price: {
+                "$gte": req.query.price_min
+                }
+        },
+    {
+        price: {
+             "$lte": req.query.price_max
+            }
+        }
+    ]
+})
+
+ORDENAR VALORES EN ASCENDENTE/ DESCENDENTE
+
+db.products.find().sort({price:1}) ASCENDENTE
+db.products.find().sort({price:-1}) DESCENDENTE

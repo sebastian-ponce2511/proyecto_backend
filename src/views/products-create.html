@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Alta de Producto</h1>
+
+    <form method="POST" action="/products" novalidate autocomplete="off">
+        <div>
+            <label for="product-title">Título del producto</label><br>
+            <input type="text" name="title">
+        </div><br>
+
+        <div>
+            <label for="product-description">Descripción del Producto</label><br>
+            <textarea name="description"></textarea>
+        </div><br>
+
+        <div>
+            <label for="product-price">Precio del producto</label><br>
+            <input type="number" name="price" min="0">
+        </div><br>
+
+        <div>
+            <label for="product-stock">Stock del Producto</label><br>
+            <input type="number" name="stock" min="0">
+        </div><br>
+
+        <div>
+            <label for="product-model">Modelo del Producto</label><br>
+            <input type="text" name="model">
+        </div><br>
+
+        <div>
+            <label for="product-brand">Marca</label><br>
+            <!-- <input type="text" name="brand"> -->
+            <select name="brand">
+                <option value="1">Sony</option>
+                <option value="2">Phillips</option>
+                <option value="3">LG</option>
+                <option value="4">Nintendo</option>
+                <option value="5">Thonet & Vander</option>
+            </select> --
+        </div><br>
+
+        <div>
+            <label for="product-seller_id">Id del vendedor</label><br>
+            <input type="number" name="seller_id">
+        </div><br>
+
+        <div>
+            <button>Enviar</button>
+        </div>
+        
+    </form>
+    
+</body>
+</html>
